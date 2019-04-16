@@ -7,19 +7,24 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 用于测试
+ *
+ * @author echcz
+ * @date 2019-04-16 22:24:37
+ */
 @RestController
 @RequestMapping("hello")
 public class HelloController {
     @PreAuthorize("hasRole('SUPERADMIN')")
     @GetMapping("world")
-    private Result<String> world() {
+    public Result<String> world() {
         return new Result<>(ResultCode.OK, "hello world");
     }
 
-
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("noworld")
-    private Result<String> noWorld() {
+    public Result<String> noWorld() {
         return new Result<>(ResultCode.OK, "No ! hello do not world");
     }
 }

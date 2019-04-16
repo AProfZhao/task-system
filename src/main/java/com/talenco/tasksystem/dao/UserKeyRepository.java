@@ -5,6 +5,12 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Optional;
 
-public interface UserKeyDao extends MongoRepository<UserKey, String> {
+/**
+ * UserKey 数据库查询类
+ *
+ * @author echcz
+ * @date 2019-04-16 22:53:37
+ */
+public interface UserKeyRepository extends MongoRepository<UserKey, String> {
     Optional<UserKey> findFirstByUsername(String username);
 }

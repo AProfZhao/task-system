@@ -1,5 +1,10 @@
 package com.talenco.tasksystem.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 /**
  * 结果实体
  *
@@ -7,6 +12,10 @@ package com.talenco.tasksystem.entity;
  *
  * @param <T> 内容类型
  */
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Result<T> {
     /**
      * 结果状态码，其取值应属于 ResultCode
@@ -16,28 +25,4 @@ public class Result<T> {
      * 内容
      */
     private T content;
-
-    public Result() {
-    }
-
-    public Result(String code, T content) {
-        this.code = code;
-        this.content = content;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public T getContent() {
-        return content;
-    }
-
-    public void setContent(T content) {
-        this.content = content;
-    }
 }

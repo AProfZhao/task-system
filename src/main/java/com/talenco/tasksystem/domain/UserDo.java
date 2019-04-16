@@ -5,23 +5,25 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 /**
- * 用户模型
+ * 用户领域模型
  *
  * @author echcz
- * @date 2019-04-16 22:28:06
+ * @date 2019-04-16 22:40:59
  */
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class User {
+@NoArgsConstructor
+public class UserDo {
     /**
-     * 用户登录信息
+     * 用户描述信息
      */
-    private UserKey key;
+    private UserDesc user;
     /**
-     * 用户实体信息
+     * 用户权限s
      */
-    private UserDesc desc;
+    private List<String> roles;
 }

@@ -1,5 +1,8 @@
 package com.talenco.tasksystem.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Objects;
 
 /**
@@ -10,26 +13,21 @@ import java.util.Objects;
  *
  * @param <K> key 类型
  * @param <V> value 类型
+ *
+ * @author echcz
+ * @date 2019-04-16 22:57:05
  */
+@Getter
+@Setter
 public class Kv<K, V> {
-    K k;
-    V v;
-
-    public K getK() {
-        return k;
-    }
-
-    public void setK(K k) {
-        this.k = k;
-    }
-
-    public V getV() {
-        return v;
-    }
-
-    public void setV(V v) {
-        this.v = v;
-    }
+    /**
+     * key
+     */
+    private K k;
+    /**
+     * value
+     */
+    private V v;
 
     @Override
     public boolean equals(Object o) {

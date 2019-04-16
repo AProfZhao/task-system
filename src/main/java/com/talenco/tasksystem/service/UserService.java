@@ -1,21 +1,20 @@
 package com.talenco.tasksystem.service;
 
-import com.talenco.tasksystem.dao.UserDescDao;
-import com.talenco.tasksystem.dao.UserKeyDao;
 import com.talenco.tasksystem.domain.UserDesc;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-@Service
-public class UserService {
-    @Autowired
-    private UserKeyDao userKeyDao;
-    @Autowired
-    private UserDescDao userDescDao;
-
-    public Optional<UserDesc> findUserDescById(String id) {
-        return userDescDao.findById(id);
-    }
+/**
+ * 用户服务类接口
+ *
+ * @author echcz
+ * @date 2019-04-16 23:49:47
+ */
+public interface UserService {
+    /**
+     * 根据UserDesc.id获取用户描述信息
+     * @param id UserDesc.id
+     * @return 用户描述信息
+     */
+    Optional<UserDesc> findUserDescById(String id);
 }

@@ -1,6 +1,6 @@
 package com.talenco.tasksystem;
 
-import com.talenco.tasksystem.dao.UserKeyDao;
+import com.talenco.tasksystem.dao.UserKeyRepository;
 import com.talenco.tasksystem.domain.UserKey;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 @SpringBootTest
 public class TasksystemApplicationTests {
     @Autowired
-    private UserKeyDao userKeyDao;
+    private UserKeyRepository userKeyRepository;
 
     @Test
     public void contextLoads() {
@@ -24,7 +24,7 @@ public class TasksystemApplicationTests {
         ArrayList<String> roles = new ArrayList<>();
         roles.add("ROLE_SUPERADMIN");
         userKey.setRoles(roles);
-        userKeyDao.save(userKey);
+        userKeyRepository.save(userKey);
     }
 
 }

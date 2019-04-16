@@ -14,6 +14,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * 返回json的登录失败处理器
+ *
+ * @author echcz
+ * @date 2019-04-16 23:56:24
+ */
 @Slf4j
 @Component
 public class RestAuthenticationFailureHandler implements AuthenticationFailureHandler {
