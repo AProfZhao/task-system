@@ -28,6 +28,7 @@ public class RestAuthenticationFailureHandler implements AuthenticationFailureHa
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
+        log.info(e.toString());
         String ip = httpServletRequest.getRemoteAddr();
         log.info(ip + "登录失败");
         httpServletResponse.setContentType("application/json;charset=UTF-8");

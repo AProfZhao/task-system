@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
 /**
  * Spring Security 配置类
@@ -35,6 +36,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     @Qualifier("restAuthenticationFailureHandler")
     private AuthenticationFailureHandler authenticationFailureHandler;
+    @Autowired
+    @Qualifier("restLogoutSuccessHandler")
+    private LogoutSuccessHandler logoutSuccessHandler;
     @Autowired
     @Qualifier("restAuthenticationEntryPoint")
     private AuthenticationEntryPoint authenticationEntryPoint;
@@ -60,8 +64,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .failureHandler(authenticationFailureHandler)
                 .and().authorizeRequests()
                     .antMatchers("/login").permitAll()
+                    .antMatchers("/*.*").permitAll()
+                    .antMatchers("/static/**").permitAll()
+                    .antMatchers("/test/**").permitAll() // 仅开发与测试环境下使用
                     .anyRequest()
                     .authenticated()
+                .and().logout()
+                    .logoutSuccessHandler(logoutSuccessHandler)
                 .and().csrf()
                     .disable();
     }

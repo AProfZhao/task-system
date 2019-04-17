@@ -2,6 +2,7 @@ package com.talenco.tasksystem.controller;
 
 import com.talenco.tasksystem.entity.Result;
 import com.talenco.tasksystem.entity.ResultCode;
+import com.talenco.tasksystem.exception.ClientException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,5 +27,21 @@ public class HelloController {
     @GetMapping("noworld")
     public Result<String> noWorld() {
         return new Result<>(ResultCode.OK, "No ! hello do not world");
+    }
+
+    @GetMapping("error")
+    public Result<String> error() {
+        if (2 > 1) {
+            throw new RuntimeException("error");
+        }
+        return new Result<>(ResultCode.ERRO, "it is error");
+    }
+
+    @GetMapping("clientError")
+    public Result<String> clientError() {
+        if (2 > 1) {
+            throw new ClientException("client error");
+        }
+        return new Result<>(ResultCode.ERRO, "it is client error");
     }
 }
