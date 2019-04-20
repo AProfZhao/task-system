@@ -18,7 +18,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@Document(collection = "user_desc")
+@Document(collection = "userDesc")
 public class UserDesc {
     /**
      * id
@@ -37,5 +37,5 @@ public class UserDesc {
     /**
      * 标签s
      */
-    private List<String> lables;
+    private List<String> labels;
 }

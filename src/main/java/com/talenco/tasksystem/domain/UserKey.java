@@ -16,8 +16,10 @@ import java.util.List;
  */
 @Getter
 @Setter
-@Document(collection = "user_key")
+@Document(collection = "userKey")
 public class UserKey {
+    public static final int NORMAL = 0;
+    public static final int DISABLE = 1;
     /**
      * id
      */
@@ -32,6 +34,11 @@ public class UserKey {
      * 密码
      */
     private String password;
+    /**
+     * 状态 0: 正常, 1: 禁用
+     */
+    @Indexed
+    private int state;
     /**
      * 用户描述信息id
      */
