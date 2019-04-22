@@ -56,6 +56,6 @@ public class MyUserDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return (userKey != null) && (userKey.getState() == UserKey.NORMAL);
+        return (userKey != null) && (userKey.getState() == UserKey.STATE_NORMAL);
     }
 }

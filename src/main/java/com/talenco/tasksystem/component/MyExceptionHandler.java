@@ -26,7 +26,8 @@ public class MyExceptionHandler {
      */
     @ExceptionHandler(AccessDeniedException.class)
     public void accessDeniedExceptionHandler(HttpServletResponse resp, AccessDeniedException e) throws IOException {
-        log.info(e.toString());
+        e.printStackTrace();
+        log.warn(e.toString());
         resp.sendError(HttpServletResponse.SC_FORBIDDEN, e.getMessage());
     }
 
@@ -35,7 +36,8 @@ public class MyExceptionHandler {
      */
     @ExceptionHandler(ClientException.class)
     public Result<String> clientExceptionHandler(HttpServletResponse resp, ClientException e) {
-        log.info(e.toString());
+        e.printStackTrace();
+        log.warn(e.toString());
         // 设置http状态码为预期返回的状态码
         resp.setStatus(e.getHttpStatus());
         // 优先设置最外层的message为结果内容
@@ -55,7 +57,8 @@ public class MyExceptionHandler {
      */
     @ExceptionHandler(Exception.class)
     public Result<String> exceptionHandler(HttpServletResponse resp, Exception e) {
-        log.info(e.toString());
+        e.printStackTrace();
+        log.warn(e.toString());
         resp.setStatus(500);
         return new Result<>(ResultCode.ERRO, e.getMessage());
     }

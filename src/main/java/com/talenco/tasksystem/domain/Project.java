@@ -8,43 +8,37 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
+import java.util.Map;
 
 /**
- * 任务
+ * 项目
+ * 包含模块(Module)
  *
  * @author echcz
- * @date 2019-04-20 22:45:28
+ * @date 2019-04-22 09:54:44
  */
 @Getter
 @Setter
 @NoArgsConstructor
-@Document(collection = "task")
-public class Task {
+@Document(collection = "project")
+public class Project {
     public static final Integer STATE_READY = 1;
     public static final Integer STATE_ACTIVATE = 2;
     public static final Integer STATE_REVIEW = 3;
     public static final Integer STATE_DONE = 4;
     public static final Integer STATE_CLOSE = 5;
     public static final Integer STATE_EXCEPTION = 6;
+
     /**
      * id
      */
     @Id
     private String id;
     /**
-     * 所属项目id
+     * 名称
      */
-    @Indexed
-    private String project;
-    /**
-     * 所属模块名
-     */
-    @Indexed
-    private String module;
-    /**
-     * 标题
-     */
-    private String title;
+    @Indexed(unique = true)
+    private String name;
     /**
      * 描述
      */
@@ -60,17 +54,8 @@ public class Task {
     private String stateDesc;
     /**
      * 负责人ids
-     * 推荐是所属模块负责人的子集
      */
     private List<String> principals;
-    /**
-     * 处理人ids
-     */
-    private List<String> processors;
-    /**
-     * 处理信息ids
-     */
-    private List<String> processInfos;
     /**
      * 创建时间
      */
@@ -92,4 +77,9 @@ public class Task {
      * 值越大优先级越高
      */
     private Integer priority;
+    /**
+     * 拥有模块s
+     * 模块名: 模块
+     */
+    private Map<String, Module> modules;
 }

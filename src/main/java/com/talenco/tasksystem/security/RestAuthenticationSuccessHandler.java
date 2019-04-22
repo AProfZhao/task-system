@@ -47,7 +47,7 @@ public class RestAuthenticationSuccessHandler implements AuthenticationSuccessHa
         user.setKey(userKey);
         String userDescId = userKey.getUserDescId();
         if (userDescId != null) {
-            Optional<UserDesc> userDesc = userServiceImpl.findUserDescById(userDescId);
+            Optional<UserDesc> userDesc = userServiceImpl.getUserDescById(userDescId);
             user.setDesc(userDesc.orElse(null));
         }
         HttpSession session = httpServletRequest.getSession();

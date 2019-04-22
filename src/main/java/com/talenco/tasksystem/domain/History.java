@@ -20,10 +20,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 @Document(collection = "history")
 public class History {
-    public static final int TYPE_USER = 1;
-    public static final int TYPE_SPACE = 2;
-    public static final int TYPE_TASK = 3;
-    public static final int TYPE_OTHER = 4;
+    public static final Integer TYPE_USER = 1;
+    public static final Integer TYPE_SPACE = 2;
+    public static final Integer TYPE_TASK = 3;
+    public static final Integer TYPE_OTHER = 4;
 
     /**
      * id
@@ -34,7 +34,7 @@ public class History {
      * 类型 1:用户管理，2:空间操作，3:任务处理，0:其它
      */
     @Indexed
-    private int type;
+    private Integer type;
     /**
      * 拥有者，是什么内容产生的此历史，或一些历史以什么做为关联
      * 可能是task，space，user

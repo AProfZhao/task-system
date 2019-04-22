@@ -3,6 +3,7 @@ package com.talenco.tasksystem.dao;
 import com.talenco.tasksystem.domain.UserKey;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -13,4 +14,6 @@ import java.util.Optional;
  */
 public interface UserKeyRepository extends MongoRepository<UserKey, String> {
     Optional<UserKey> findFirstByUsername(String username);
+
+    List<UserKey> findAllByUsernameNot(String username);
 }

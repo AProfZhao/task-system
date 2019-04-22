@@ -10,41 +10,22 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.List;
 
 /**
- * 任务
+ * 模块
  *
  * @author echcz
- * @date 2019-04-20 22:45:28
+ * @date 2019-04-20 22:45:35
  */
 @Getter
 @Setter
 @NoArgsConstructor
-@Document(collection = "task")
-public class Task {
+public class Module {
     public static final Integer STATE_READY = 1;
     public static final Integer STATE_ACTIVATE = 2;
     public static final Integer STATE_REVIEW = 3;
     public static final Integer STATE_DONE = 4;
     public static final Integer STATE_CLOSE = 5;
     public static final Integer STATE_EXCEPTION = 6;
-    /**
-     * id
-     */
-    @Id
-    private String id;
-    /**
-     * 所属项目id
-     */
-    @Indexed
-    private String project;
-    /**
-     * 所属模块名
-     */
-    @Indexed
-    private String module;
-    /**
-     * 标题
-     */
-    private String title;
+
     /**
      * 描述
      */
@@ -60,17 +41,10 @@ public class Task {
     private String stateDesc;
     /**
      * 负责人ids
-     * 推荐是所属模块负责人的子集
+     * 推荐是所属项目负责人的子集
      */
+    @Indexed
     private List<String> principals;
-    /**
-     * 处理人ids
-     */
-    private List<String> processors;
-    /**
-     * 处理信息ids
-     */
-    private List<String> processInfos;
     /**
      * 创建时间
      */

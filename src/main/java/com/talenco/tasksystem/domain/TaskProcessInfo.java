@@ -16,6 +16,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Setter
 @Document(collection = "taskProcessInfo")
 public class TaskProcessInfo {
+    public static final Integer STATE_PENDING = 1;
+    public static final Integer STATE_PASS = 2;
+    public static final Integer STATE_NOPASS = 3;
+
     /**
      * id
      */
@@ -27,6 +31,10 @@ public class TaskProcessInfo {
     @Indexed
     private String task;
     /**
+     * 状态 1:待审核 2:通过 3:未通过
+     */
+    private Integer state;
+    /**
      * 发送人/处理人id
      */
     private String sender;
@@ -37,7 +45,7 @@ public class TaskProcessInfo {
     /**
      * 发送时间
      */
-    private long sendTm;
+    private Long sendTm;
     /**
      * 审核人/管理人id
      */

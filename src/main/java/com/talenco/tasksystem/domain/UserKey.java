@@ -18,8 +18,9 @@ import java.util.List;
 @Setter
 @Document(collection = "userKey")
 public class UserKey {
-    public static final int NORMAL = 0;
-    public static final int DISABLE = 1;
+    public static final String NAME_ADMIN = "admin";
+    public static final Integer STATE_NORMAL = 1;
+    public static final Integer STATE_DISABLE = 2;
     /**
      * id
      */
@@ -35,10 +36,10 @@ public class UserKey {
      */
     private String password;
     /**
-     * 状态 0: 正常, 1: 禁用
+     * 状态 1: 正常, 2: 禁用
      */
     @Indexed
-    private int state;
+    private Integer state;
     /**
      * 用户描述信息id
      */
