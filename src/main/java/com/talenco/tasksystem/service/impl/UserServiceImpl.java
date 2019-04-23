@@ -8,6 +8,7 @@ import com.talenco.tasksystem.dao.UserKeyRepository;
 import com.talenco.tasksystem.domain.UserDesc;
 import com.talenco.tasksystem.domain.UserKey;
 import com.talenco.tasksystem.service.UserService;
+import com.talenco.tasksystem.util.TemplateUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -55,43 +56,31 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean addUserKey(UserKey userKey) {
-        try {
+        return TemplateUtils.falseAndLogIfException(log, () -> {
             userKey.setId(null);
             userKeyRepository.save(userKey);
             return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            log.warn(e.toString());
-            return false;
-        }
+        });
     }
 
     @Override
     public boolean setUserKey(UserKey userKey) {
-        try {
+        return TemplateUtils.falseAndLogIfException(log, () -> {
             UpdateResult updateResult = userKeyDao.updateUserKey(userKey);
             if (updateResult.isModifiedCountAvailable()) {
                 return updateResult.getModifiedCount() > 0;
             } else {
                 return true;
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-            log.warn(e.toString());
-            return false;
-        }
+        });
     }
 
     @Override
     public boolean removeUserKeyById(String id) {
-        try {
+        return TemplateUtils.falseAndLogIfException(log, () -> {
             userKeyRepository.deleteById(id);
             return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            log.warn(e.toString());
-            return false;
-        }
+        });
     }
 
     @Override
@@ -101,29 +90,21 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean setUserDesc(UserDesc userDesc) {
-        try {
+        return TemplateUtils.falseAndLogIfException(log, () -> {
             UpdateResult updateResult = userDescDao.updateUserDesc(userDesc);
             if (updateResult.isModifiedCountAvailable()) {
                 return updateResult.getModifiedCount() > 0;
             } else {
                 return true;
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-            log.warn(e.toString());
-            return false;
-        }
+        });
     }
 
     @Override
     public boolean removeUserDescById(String id) {
-        try {
+        return TemplateUtils.falseAndLogIfException(log, () -> {
             userDescRepository.deleteById(id);
             return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            log.warn(e.toString());
-            return false;
-        }
+        });
     }
 }

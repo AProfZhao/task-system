@@ -7,6 +7,7 @@ import com.talenco.tasksystem.domain.Project;
 import com.talenco.tasksystem.domain.UserDesc;
 import com.talenco.tasksystem.domain.UserKey;
 import org.apache.commons.beanutils.BeanMap;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,6 +86,12 @@ public class TasksystemApplicationTests {
             }
             System.out.println(keyClass + ": " + key + "==>" + valueClass + ": " + value);
         }
+    }
+
+    @Test
+    public void stringUtilsTest() {
+        System.out.println(StringUtils.isBlank(null));
+        System.out.println(StringUtils.isBlank("\t  \n"));
     }
 
 }

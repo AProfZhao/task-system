@@ -6,6 +6,13 @@ import org.springframework.data.mongodb.core.query.Update;
 
 import java.util.Map;
 
+/**
+ * Mongo工具类
+ * 以方便使用{@link org.springframework.data.mongodb.core.MongoTemplate}
+ *
+ * @author echcz
+ * @date 2019-04-23 16:31:06
+ */
 public class MongoUtils {
     private static final String EXCLUDE_KEY = "class";
     private MongoUtils(){}
